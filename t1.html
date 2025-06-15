@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stream Link Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .output {
+      margin-top: 20px;
+      word-wrap: break-word;
+      padding: 10px;
+      background: #eee;
+      border-radius: 5px;
+    }
+
+    .output a {
+      color: #0066cc;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Stream Link Generator</h2>
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" id="imageUrl" placeholder="Enter image URL">
+
+    <label for="streamLink">Stream Link:</label>
+    <input type="text" id="streamLink" placeholder="Enter stream link">
+
+    <button onclick="generateLink()">Generate Link</button>
+
+    <div class="output" id="result"></div>
+  </div>
+
+  <script>
+    function generateLink() {
+      const image = encodeURIComponent(document.getElementById('imageUrl').value.trim());
+      const link = encodeURIComponent(document.getElementById('streamLink').value.trim());
+
+      if (!image || !link) {
+        document.getElementById('result').innerHTML = "<span style='color: red;'>Please enter both Image URL and Stream Link.</span>";
+        return;
+      }
+
+      const finalUrl = `https://vivo.zetasports.in/p/stream.html?thumb=${image}&zs=${link}`;
+
+      document.getElementById('result').innerHTML = `
+        <strong>Generated Link:</strong><br>
+        <a href="${finalUrl}" target="_blank">${finalUrl}</a>
+      `;
+    }
+  </script>
+</body>
+</html>
