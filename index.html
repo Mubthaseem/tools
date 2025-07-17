@@ -1,47 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tool Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #1f2937, #4b5563);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Character Counter - Free Online Text Analysis Tool</title>
+    <meta name="description" content="Free online word and character counter tool. Count words, characters, sentences, paragraphs, and get reading time estimates. Perfect for writers, bloggers, and content creators.">
+    <meta name="keywords" content="word counter, character counter, text analyzer, word count tool, character count, text statistics, writing tool, blog post counter">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Word Counter Tool">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Word & Character Counter - Free Online Text Analysis Tool">
+    <meta property="og:description" content="Free online word and character counter tool. Count words, characters, sentences, paragraphs, and get reading time estimates.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Word & Character Counter - Free Online Text Analysis Tool">
+    <meta name="twitter:description" content="Free online word and character counter tool. Count words, characters, sentences, paragraphs, and get reading time estimates.">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Word & Character Counter",
+        "description": "Free online tool to count words, characters, sentences, and paragraphs in your text",
+        "url": "https://example.com/word-counter",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Real-time counting",
+            "Character frequency analysis", 
+            "Keyword density checker",
+            "Reading time estimation",
+            "Export as text file",
+            "Mobile responsive",
+            "No registration required"
+        ]
     }
-
-    a {
-      text-decoration: none;
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: 600;
-      background-color: #10b981;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #059669;
-      transform: scale(1.05);
-    }
-  </style>
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header__title">📝 Word & Character Counter</h1>
+            <p class="header__subtitle">Free online tool to analyze your text - count words, characters, sentences, and more!</p>
+        </header>
 
-  <a href="/t1.html"><button>TOOL 1 - LINK MAKER</button></a>
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Text Input Section -->
+            <section class="input-section">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="textInput" 
+                        class="text-input" 
+                        placeholder="Start typing or paste your text here..."
+                        spellcheck="false"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button id="clearBtn" class="btn btn--secondary btn--sm">Clear Text</button>
+                        <button id="copyBtn" class="btn btn--outline btn--sm">Copy Text</button>
+                        <button id="exportBtn" class="btn btn--outline btn--sm">Export .txt</button>
+                    </div>
+                </div>
+                
+                <!-- Text Case Options -->
+                <div class="case-options">
+                    <h3 class="case-options__title">Text Case Options:</h3>
+                    <div class="case-buttons">
+                        <button id="uppercaseBtn" class="btn btn--outline btn--sm">UPPERCASE</button>
+                        <button id="lowercaseBtn" class="btn btn--outline btn--sm">lowercase</button>
+                        <button id="titlecaseBtn" class="btn btn--outline btn--sm">Title Case</button>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Statistics Section -->
+            <section class="stats-section">
+                <h2 class="stats-section__title">📊 Text Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📝</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="charWithSpaces">0</div>
+                            <div class="stat-card__label">Characters (with spaces)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">🔤</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="charWithoutSpaces">0</div>
+                            <div class="stat-card__label">Characters (without spaces)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📊</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="wordCount">0</div>
+                            <div class="stat-card__label">Words</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📄</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="sentenceCount">0</div>
+                            <div class="stat-card__label">Sentences</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📋</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="paragraphCount">0</div>
+                            <div class="stat-card__label">Paragraphs</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📏</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="lineCount">0</div>
+                            <div class="stat-card__label">Lines</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">⏱️</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="readingTime">0 min</div>
+                            <div class="stat-card__label">Reading Time</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📈</div>
+                        <div class="stat-card__content">
+                            <div class="stat-card__value" id="avgWordsPerSentence">0</div>
+                            <div class="stat-card__label">Avg Words/Sentence</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis Section -->
+            <section class="analysis-section">
+                <div class="analysis-grid">
+                    <!-- Character Frequency -->
+                    <div class="analysis-card">
+                        <h3 class="analysis-card__title">🔍 Character Frequency</h3>
+                        <div id="charFrequency" class="analysis-card__content">
+                            <p class="analysis-card__empty">Start typing to see character frequency analysis...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Keyword Density -->
+                    <div class="analysis-card">
+                        <h3 class="analysis-card__title">🎯 Most Frequent Words</h3>
+                        <div id="keywordDensity" class="analysis-card__content">
+                            <p class="analysis-card__empty">Start typing to see word frequency analysis...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer__text">
+                Use this free word counter tool to analyze your text content. Perfect for writers, bloggers, students, and content creators who need to track word counts, character limits, and reading times.
+            </p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
