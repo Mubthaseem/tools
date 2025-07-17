@@ -1,3 +1,8 @@
+.my-tool-container {
+    max-width: 100%;
+    min-height: 400px;
+    overflow: visible !important;
+}
 :root {
   /* Colors */
   --color-background: rgba(252, 252, 249, 1);
